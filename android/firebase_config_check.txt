@@ -1,0 +1,16 @@
+If you see CONFIGURATION_NOT_FOUND or oauth_client is empty in google-services.json:
+
+1) Google Cloud Console (same project as Firebase: admobdevta)
+   APIs & Services -> Library -> search "Identity Toolkit API" -> Enable.
+
+2) Firebase Console -> Authentication -> Sign-in method -> Email/Password -> Enable.
+
+3) Firebase Console -> Project settings -> Your apps -> Android (com.example.advmobdevta)
+   Add SHA-1 (debug): keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+4) Download google-services.json AGAIN and replace android/app/google-services.json.
+   Open the file: "oauth_client" should NOT be an empty array [] after SHA is registered.
+
+5) flutter clean && flutter pub get && flutter run
+
+Optional: Google Cloud -> APIs & Services -> Credentials -> ensure the Browser key / Android keys are not over-restricted for testing.
